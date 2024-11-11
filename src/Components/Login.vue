@@ -1,3 +1,19 @@
+<template>
+    <div id="login" class="card">
+        <h1>Login</h1>
+        <form @submit.prevent="emitLogin">
+            <div class="container">
+                <label for="email">E-mail:</label>
+                <input v-model="email" placeholder="Email:" />
+                <br>
+                <label for="senha">Senha:</label>
+                <input v-model="senha" type="password" id="senha" name="senha" />
+                <button type="submit" class="animated-button">Entrar</button>
+            </div>
+        </form>
+    </div>
+</template>
+
 <script>
 export default {
     name: "Login",
@@ -9,40 +25,29 @@ export default {
     },
     methods: {
         emitLogin() {
-            console.log("Email: " + this.email);
-            this.$emit("login", this.email);
+            // Verifica se o email e a senha estão corretos
+            if (this.email === "Leonardo@gmail.com" && this.senha === "123") {
+                console.log("Email: " + this.email);
+                this.$emit("login", this.email);
+            } else {
+                // Exibe uma mensagem de erro se as credenciais estiverem erradas
+                alert("Senha errada!"); // Usando alert para mostrar a mensagem
+            }
         },
     }
 }
 </script>
 
-<template>
-    <div id="login" class="card">
-        <h1>Login</h1>
-        <form @submit.prevent="emitLogin">
-            <div class="container">
-                <label for="email">E-mail:</label>
-                <input v-model="email" placeholder="Email:" />
-                <br>
-                <label for="senha">Senha:</label>
-                <input v-model="senha" type="password" id="senha" name="senha" />
-                <button type="submit">Entrar</button>
-            </div>
-        </form>
-    </div>
-</template>
-
 <style scoped>
 .card {
     background-color: #ffffff; /* White background for the card */
     border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow:5px 5px 5px 5px;
     padding: 20px; /* Inner spacing */
     margin: 20px; /* Space around the card */
     max-width: 400px; /* Max width for the card */
     margin-left: auto; /* Center horizontally */
     margin-right: auto; /* Center horizontally */
-    box-shadow: 5px 5px 5px 5px;
 }
 
 h1 {
@@ -72,11 +77,12 @@ input {
     padding: 10px; /* Inner padding for input fields */
     width: 100%; /* Full width of the container */
     max-width: 300px; /* Optional: set a max width for inputs */
-    border-radius: 10px 10px;
+    border-radius: 10px; /* Rounded corners for inputs */
+    border: 1px solid #ccc; /* Border for inputs */
 }
 
 button {
-    background-color: #79151c; /* Verde */
+    background-color: #79151c; /* Background color */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -84,7 +90,20 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    transition: background-color 0.3s; /* Transição suave */
-    border-radius: 10px 10px;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for background and transform */
+    border-radius: 10px; /* Rounded corners for button */
+    position: relative; /* For positioning */
+    overflow: hidden; /* Hide overflow */
+}
+
+.animated-button:hover {
+    background-color: #a41d24; /* Darker background color on hover */
+    transform: translateY(-5px); /* Move the button up */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+.animated-button:active {
+    transform: translateY(2px); /* Move the button down when clicked */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Reduce shadow on click */
 }
 </style>

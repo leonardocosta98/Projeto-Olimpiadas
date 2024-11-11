@@ -16,7 +16,7 @@ import investir3 from '@/assets/investir3.jpg';
 
 <style scoped>
 .card {
-    background-color:#ffffff;/* White background for the card */
+    background-color:#e9e9e9;/* White background for the card */
     border-radius: 10px 10px 10px 10px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     padding: 20px; /* Inner spacing */
